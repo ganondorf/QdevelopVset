@@ -22,9 +22,9 @@
 #include <vector>
 #include <iostream>
 #include <stdlib.h>
-#include "Experiment.h"
+#include "ExperimentManager.h"
 #include "Visualization.h"
-
+#include <QTreeWidget>
 using namespace std;
 
 class Workspace
@@ -32,8 +32,8 @@ class Workspace
 	private:
 		//Attributes
 		string name_;
-		vector<Experiment*> list_of_experiments_;
 		vector<Visualization*> list_of_visualizations_;
+		ExperimentManager expMan;
 
 	public:
 		//Constructors and destructors
@@ -43,16 +43,12 @@ class Workspace
 		//Accessors and mutators
 		string getName() const;
 		void setName(string name_);
-
-		vector<Experiment*> getList_of_experiments() const;
+		void setTree(QTreeWidget *TreeWidget);
 		vector<Visualization*> getList_of_visualizations() const;
 
-		//Methods
-		//Manage experiments
-		void add_experiment(Experiment*);
-		void remove_experiment(int);
-		void remove_experiment(Experiment*);
-		void print_list_of_experiments();
+		//Experiment Methods
+		void add_experiment(string expstring);
+		vector<Experiment*> getList_of_experiments() const;
 
 		//Manage visualizations
 		void add_visualization(Visualization*);

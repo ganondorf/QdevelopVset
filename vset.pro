@@ -12,7 +12,8 @@ HEADERS = src/mainwindowimpl.h \
  src/pugiconfig.hpp \
  src/pugixml.hpp \
  src/Model.h \
- src/ExperimentManager.h
+ src/ExperimentManager.h \
+ src/Workspace.h
 SOURCES = src/mainwindowimpl.cpp \
  src/main.cpp \
  src/animatorwindow.cpp \
@@ -24,6 +25,7 @@ SOURCES = src/mainwindowimpl.cpp \
  src/VelocityModel.cpp \
  src/PerturbationModel.cpp \
  src/CoverageModel.cpp \
- src/ExperimentManager.cpp
+ src/ExperimentManager.cpp \
+ src/Workspace.cpp
 TEMPLATE = app
 LIBS =

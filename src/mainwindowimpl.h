@@ -9,7 +9,7 @@
 #include <QMainWindow>
 #include <QTreeWidgetItem>
 #include "ui_mainwindow.h"
-#include "ExperimentManager.h"
+#include "Workspace.h"
 #include <stdlib.h>
 //
 class MainWindowImpl : public QMainWindow, public Ui::MainWindow
@@ -17,7 +17,7 @@ class MainWindowImpl : public QMainWindow, public Ui::MainWindow
 Q_OBJECT
 public:
 	MainWindowImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
-	ExperimentManager expMan;
+	Workspace vswork;//default workspace
 	 QTreeWidgetItem *vel1Item;
 private slots:
 		void openSelect();

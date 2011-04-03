@@ -4,7 +4,8 @@
  *      Author: Joel Quintana
  *
  *      WORKSPACE
- *      This class contains all the information relevant to a Visualization Project
+ *      This class contains all the information relevant to a
+ *  Visualization Project
  *      Contains:
  *      - keeps track of added experiments
  *      - keeps track of visualizations opened
@@ -16,11 +17,12 @@
  */
 
 #include "Workspace.h"
+#include "ExperimentManager.h"
 
 //Default constructor
 Workspace::Workspace()
 {
-	name_ = "Default Name";
+	name_ = "Default";
 }
 
 //Default destructor
@@ -44,7 +46,7 @@ void Workspace::setName(string name_)
 //Return the list of experiments added to the workspace
 vector<Experiment*> Workspace::getList_of_experiments() const
 {
-    return list_of_experiments_;
+    return expMan.getList_of_experiments();
 }
 
 //Return the list of visualizations opened in the workspace
@@ -57,43 +59,15 @@ vector<Visualization*> Workspace::getList_of_visualizations() const
 
 //Add a new experiment to the workspace
 //The experiment will be added to the end of the list
-void Workspace::add_experiment(Experiment* new_experiment)
+void Workspace::add_experiment(string expstring)
 {
-	list_of_experiments_.push_back(new_experiment);
+	//call experiment manager and pass it the string
+	expMan.add(expstring);	
+	//list_of_experiments_.push_back(new_experiment);
 }
 
-//Remove an experiment from the workspace
-//The index of the experiment to be removed must be specified
-void Workspace::remove_experiment(int index)
-{
-	list_of_experiments_.erase(list_of_experiments_.begin() + index);
-}
 
-//Remove an experiment from the workspace
-//The pointer to the experiment to be removed must be specified
-void Workspace::remove_experiment(Experiment* to_be_removed)
-{
-	//get index of experiment
-	int index = -1;
-	for(int i = 0; i < list_of_experiments_.size(); i++)
-	{
-		if(list_of_experiments_[i] == to_be_removed)
-		{
-			index = i;
-			break;
-		}
-	}
-	list_of_experiments_.erase(list_of_experiments_.begin() + index);
-}
 
-//Print list of experiments for debugging purposes
-void Workspace::print_list_of_experiments()
-{
-	for(int i = 0; i < list_of_experiments_.size(); i++)
-	{
-		cout << "Experiment at index [" << i << "]: " << (*list_of_experiments_[i]).getprojectName() << endl;
-	}
-}
 
 //Add a new visualization to the workspace
 //The new visualization will be added to the end of the list
@@ -127,6 +101,13 @@ void Workspace::remove_visualization(Visualization* to_be_removed)
 	list_of_visualizations_.erase(list_of_visualizations_.begin() + index);
 }
 
+//Set Tree Widget Reference
+void Workspace::setTree(QTreeWidget *TreeWidget){
+	expMan.setTreeWidget(TreeWidget);
+}
+
+
+/**
 int main()
 {
 	cout << "Running" << endl;
@@ -166,4 +147,4 @@ int main()
 	my_workspace.print_list_of_experiments();
 
 	cout << "\nComplete" << endl;
-}
+}**/

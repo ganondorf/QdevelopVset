@@ -5,23 +5,40 @@
 #include <string>
 #include <QMessageBox>
 #include <QString>
+#include <QTreeWidget>
 
  ExperimentManager::ExperimentManager()
 {
     	
    	}
    	
-   	//Add experiment to the list
-void ExperimentManager::add(string expStr,  QTreeWidget *treeWidget) {
+//Add experiment to the list
+void ExperimentManager::add(string expStr) {
 
-  //vector<Model> models;
-
-   // experimentList.push_back(Experiment(expStr));
-     
-   QMessageBox msgBox;
-   QString qstr = QString::fromStdString(expStr);
+ Experiment new_experiment = Experiment(expStr);
+ //list_of_experiments_.push_back(&new_experiment);
+/* 
+ //create the root node    
+    QTreeWidgetItem *item = new QTreeWidgetItem(treeWidget);
+    // item->setText(0, tr("Potrillo"));
+    QString projectName = QString::fromStdString(new_experiment.getprojectName());
+    item->setText(0, projectName);
+  */  
+    
+  // models =  new_experiment.getModels();
+   //unsigned int i;
+   //for(i=0;i<models.size();i++){
+   	//printf("%s", models[i].getName());
+   	
+  	//}
+//debugging selected file String URL 
+/*
+ QMessageBox msgBox;
+ QString qstr = QString::fromStdString(new_experiment.getprojectName());
  msgBox.setText(qstr);
  msgBox.exec();
+ */
+ 
 /**
   *     
     Experiment *temp;
@@ -38,31 +55,52 @@ void ExperimentManager::add(string expStr,  QTreeWidget *treeWidget) {
 **/
 }
 
-   //Remove experiment from the list
-void ExperimentManager::remove(string expStr, QTreeWidget *treeWidget) {
-			//vector name:  experimentList
-			  int i;
-		
-		int removei;
-		//get the index where the experiment is
-		
-		for(i=0 ;i<experimentList.size(); i++){
-		   if (experimentList[i].getprojectName() == expStr){
-			removei = i;
-			
-		   }
-		}
-		  
-		experimentList.erase(experimentList.begin()+removei);
-		
-		 //
-		  //cout << "myvector contains:";
-		  //for (i=0; i<myvector.size(); i++)
-		    //cout << " " << myvector[i];
-		  //cout << endl;
-		
-    
+ 
 
+//Set the Treewidget reference
+void ExperimentManager::setTreeWidget(QTreeWidget *TreeWidget){
+	treeWidget = TreeWidget;
+	
+}
+
+
+//Print list of experiments for debugging purposes
+void ExperimentManager::print_list_of_experiments()
+{
+	for(int i = 0; i < list_of_experiments_.size(); i++)
+	{
+		cout << "Experiment at index [" << i << "]: " << (*list_of_experiments_[i]).getprojectName() << endl;
+	}
+}
+
+//Remove an experiment from the workspace
+//The pointer to the experiment to be removed must be specified
+void ExperimentManager::remove_experiment(Experiment* to_be_removed)
+{
+	//get index of experiment
+	int index = -1;
+	for(int i = 0; i < list_of_experiments_.size(); i++)
+	{
+		if(list_of_experiments_[i] == to_be_removed)
+		{
+			index = i;
+			break;
+		}
+	}
+	list_of_experiments_.erase(list_of_experiments_.begin() + index);
+}
+//Remove an experiment from the workspace
+//The index of the experiment to be removed must be specified
+void ExperimentManager::remove_experiment(int index)
+{
+	list_of_experiments_.erase(list_of_experiments_.begin() + index);
+}
+
+
+//Return the list of experiments added to the workspace
+vector<Experiment*> ExperimentManager::getList_of_experiments() const
+{
+    return list_of_experiments_;
 }
 
 

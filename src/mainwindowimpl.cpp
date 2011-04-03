@@ -17,27 +17,25 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
 	setupUi(this);
 	//initialize Experiment Manager
   treeWidget->setColumnCount(3);
-  QStringList header;
+  QStringList header;//EP Header
   header << "Name" << "Iteration" << "Step";
-  treeWidget->setHeaderLabels(header);
+  treeWidget->setHeaderLabels(header);//assign headers
 
 	//connect the signal that opens a new file
 	connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
 	
 	//connect vel	
 	connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
-
-            
-}
+ 
+  //vswork connect widgets to references
+  vswork.setTree(treeWidget);
+ }
 //
 
 //Opens the file dialog and
 //gets a string to the XML file
 void MainWindowImpl::openSelect()
 {	
-	
-	
-
 	//Open Select XML Dialog and filter the files
 	//by extension
 	QString fileName;
@@ -49,7 +47,10 @@ void MainWindowImpl::openSelect()
 	);
 	
 	//add experiment to the vector of experiments in the manager
-	expMan.add(fileName.toStdString(), treeWidget);
+	//expMan.add(fileName.toStdString(), treeWidget);
+
+	vswork.add_experiment(fileName.toStdString());
+ 
 		refreshTreeItems();
 
 	
@@ -57,11 +58,7 @@ void MainWindowImpl::openSelect()
 
 void MainWindowImpl::refreshTreeItems()
 {
-
-
-
-
-
+/**
     QTreeWidgetItem *item = new QTreeWidgetItem(treeWidget);
      item->setText(0, tr("Potrillo"));
      
@@ -156,6 +153,7 @@ QTreeWidgetItem *finalItem = new QTreeWidgetItem(item);
 treeWidget->resizeColumnToContents(1);
 treeWidget->resizeColumnToContents(2);
 treeWidget->resizeColumnToContents(3);
+*/
 }
 
 

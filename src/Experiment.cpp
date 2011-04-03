@@ -45,7 +45,7 @@ Experiment::~Experiment() {
 
 
 bool Experiment::open_model(Model model) {
-	
+
     return true;
 }
 
@@ -87,7 +87,7 @@ void Experiment::set_shot_points(pugi::xml_node node) {
         ShotPoint sp(sp_node);
         shot_points.push_back(sp);
     }
-	
+
 }
 
 //Gets the paths to the model files, stores the model files into its respective vector
@@ -101,11 +101,13 @@ void Experiment::parse_paths() {
     getdir(time_path(), time_files);
     getdir(velocity_path(), velocity_files);
     getdir(perturbation_path(), perturbation_files);
-
+    
     create_models(coverage_files, COVERAGE_MODEL);
+    /*
     create_models(velocity_files, VELOCITY_MODEL);
     create_models(time_files, TIME_MODEL);
     create_models(perturbation_files, PERTURBATION_MODEL);
+*/
 }
 
 string Experiment::coverage_path() {
@@ -147,7 +149,7 @@ int Experiment::getdir(string path, vector<string> &files) {
 //From the model files, this method creates and stores the models in a vector<Model>
 void Experiment::create_models(vector<string> files, int model_type) {
 	vector<Model> models;
-    for(int i = 0; i < files.size(); i++) {
+    for(unsigned int i = 0; i < files.size()-1; i++) {
         Model model;
         switch(model_type) {
             case COVERAGE_MODEL:
