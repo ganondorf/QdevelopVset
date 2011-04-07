@@ -21,11 +21,11 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
   header << "Name" << "Iteration" << "Step";
   treeWidget->setHeaderLabels(header);//assign headers
 
-	//connect the signal that opens a new file
-	connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
+  //connect the signal that opens a new file
+  connect(actionOpen, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::OpenDialog)));
 	
-	//connect vel	
-	connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
+  //connect vel
+  connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
  
   //vswork connect widgets to references
   vswork.setTree(treeWidget);
@@ -52,6 +52,22 @@ void MainWindowImpl::openSelect()
 	vswork.add_experiment(fileName.toStdString());
  
 		refreshTreeItems();	
+}
+
+void MainWindowImpl::doAction(int currentAction){
+
+    setCurrentPointer(currentAction);
+
+    switch (currentAction){
+
+    case OpenDialog:
+        openSelect();
+        break;
+    default: break;
+
+    }
+
+
 }
 
 //Change current Cursor POinter according to the current action

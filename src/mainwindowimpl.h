@@ -26,6 +26,7 @@ private slots:
 	void openSelect();
 	void refreshTreeItems();
 	void openVel();
+        void doAction(int currentAction);
 	
 };
 #endif
