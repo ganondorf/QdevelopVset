@@ -1,6 +1,3 @@
-/**
- * Carlos Gonzalez
- */
 
 #ifndef ANIMATORWINDOW_H
 #define ANIMATORWINDOW_H

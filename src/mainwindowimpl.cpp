@@ -23,6 +23,11 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
 
   //connect the signal that opens a new file
   connect(actionOpen, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::OpenDialog)));
+  connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::OpenDialog)));
+  connect(actionSave, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
+  connect(actionSave_1, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
+  connect(actionSave_2, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
+  connect(actionAnimator, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::OpenAnimatorDialog)));
 	
   //connect vel
   connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
@@ -50,10 +55,29 @@ void MainWindowImpl::openSelect()
 	//expMan.add(fileName.toStdString(), treeWidget);
 
 	vswork.add_experiment(fileName.toStdString());
- 
-		refreshTreeItems();	
+        refreshTreeItems();
 }
 
+/**
+  Store Binary file name
+**/
+void MainWindowImpl::saveFile(){
+
+    if(!getBINfile()){
+        QString fileName = QFileDialog::getSaveFileName(
+        this,
+        "Save current Experiment",
+        "/",
+        tr("Binary (*.VSeT)")
+        );
+
+        setBINfile(fileName);
+    }
+}
+
+/**
+   Call appropriate action according to the Signal
+**/
 void MainWindowImpl::doAction(int currentAction){
 
     setCurrentPointer(currentAction);
@@ -62,6 +86,12 @@ void MainWindowImpl::doAction(int currentAction){
 
     case OpenDialog:
         openSelect();
+        break;
+    case SaveDialog:
+        saveFile();
+        break;
+    case OpenAnimatorDialog:
+        OpenAnimatorWindow();
         break;
     default: break;
 
@@ -85,9 +115,16 @@ void MainWindowImpl::setCurrentPointer(int currentAction){
         cursor = Qt::CrossCursor;
         break;
     default:
-        cursor = Qt::CrossCursor;
+        cursor = Qt::ArrowCursor;
     }
     setCursor(cursor);
+}
+
+void MainWindowImpl::OpenAnimatorWindow(){
+
+    AnimatorWindow * win = new AnimatorWindow();
+    win->show();
+    win->activateWindow();
 }
 
 void MainWindowImpl::refreshTreeItems()
