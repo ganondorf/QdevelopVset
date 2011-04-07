@@ -1,14 +1,3 @@
-To compile the code
+On Qdevelop open the .pro file from the Project menu.
 
-Open up a terminal.
-Navigate to the vset folder
-
-run:
-
-qmake -project
-
-qmake .
-
-make
-
-That should compile the code on the "bin" folder and name it "vset"
+Then compile using Build and Rebuild from QDevelop
