@@ -51,9 +51,27 @@ void MainWindowImpl::openSelect()
 
 	vswork.add_experiment(fileName.toStdString());
  
-		refreshTreeItems();
+		refreshTreeItems();	
+}
 
-	
+//Change current Cursor POinter according to the current action
+void MainWindowImpl::setCurrentPointer(int currentAction){
+
+    QCursor cursor = NULL;
+    switch(currentAction){
+    case Slice:
+        cursor = Qt::CrossCursor;
+        break;
+    case Zoom:
+        cursor = Qt::CrossCursor;
+        break;
+    case Pan:
+        cursor = Qt::CrossCursor;
+        break;
+    default:
+        cursor = Qt::CrossCursor;
+    }
+    setCursor(cursor);
 }
 
 void MainWindowImpl::refreshTreeItems()

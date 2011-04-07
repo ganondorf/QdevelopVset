@@ -18,11 +18,15 @@ Q_OBJECT
 public:
 	MainWindowImpl( QWidget * parent = 0, Qt::WFlags f = 0 );
 	Workspace vswork;//default workspace
-	 QTreeWidgetItem *vel1Item;
+	QTreeWidgetItem *vel1Item;
+	enum buttonActions{OpenDialog, SaveDialog, Slice, Zoom, Pan};
+	void setCurrentPointer(int currentAction);
+
 private slots:
-		void openSelect();
-		void refreshTreeItems();
-	    void openVel();
+	void openSelect();
+	void refreshTreeItems();
+	void openVel();
+	
 };
 #endif
 
