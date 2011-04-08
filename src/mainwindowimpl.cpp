@@ -21,15 +21,13 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
   header << "Name" << "Iteration" << "Step";
   treeWidget->setHeaderLabels(header);//assign headers
 
-  //connect the signal that opens a new file
-buttonActions dialogtouse;
-dialogtouse = OpenDialog;
-  connect(actionOpen, SIGNAL(triggered()), this, SLOT(doAction(1)));
-  connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::OpenDialog)));
-  connect(actionSave, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
-  connect(actionSave_1, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
-  connect(actionSave_2, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
-  connect(actionAnimator, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::OpenAnimatorDialog)));
+  //connect the signal related to the top bars
+  connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
+  connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(openSelect()));
+  connect(actionSave, SIGNAL(triggered()), this, SLOT(saveFile()));
+  connect(actionSave_1, SIGNAL(triggered()), this, SLOT(saveFile()));
+  connect(actionSave_2, SIGNAL(clicked()), this, SLOT(saveFile()));
+  connect(actionAnimator, SIGNAL(clicked()), this, SLOT(OpenAnimatorWindow()));
 	
   //connect vel
   connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
@@ -77,29 +75,8 @@ void MainWindowImpl::saveFile(){
     }
 }
 
-/**
-   Call appropriate action according to the Signal
-**/
-void MainWindowImpl::doAction(int currentAction){
-
-    setCurrentPointer(currentAction);
-
-    switch (currentAction){
-
-    case OpenDialog:
-        openSelect();
-        break;
-    case SaveDialog:
-        saveFile();
-        break;
-    case OpenAnimatorDialog:
-        OpenAnimatorWindow();
-        break;
-    default: break;
-
-    }
-
-
+int MainWindowImpl::getEnumVal(buttonActions action){
+    return action;
 }
 
 //Change current Cursor POinter according to the current action
