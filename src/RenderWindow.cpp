@@ -1,6 +1,8 @@
+
 #include "RenderWindow.h"
 #include <QApplication>
-#include <vtkSmartPointer.h>
+/**
+//#include <vtkSmartPointer.h>
 #include <vtkSphereSource.h>
 #include <vtkPolyDataMapper.h>
 #include <vtkActor.h>
@@ -10,9 +12,10 @@
 #include <vtkRenderer.h>
 #include <vtkJPEGReader.h>
 #include <QVTKWidget.h>
-
+*/
 int RenderWindow::main(int argc, char** argv)
 {
+	/**
   QApplication app(argc, argv);
  
   QVTKWidget widget;
@@ -38,4 +41,5 @@ int RenderWindow::main(int argc, char** argv)
   app.exec();
  
   return EXIT_SUCCESS;
+**/
 }

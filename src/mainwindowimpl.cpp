@@ -22,7 +22,9 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
   treeWidget->setHeaderLabels(header);//assign headers
 
   //connect the signal that opens a new file
-  connect(actionOpen, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::OpenDialog)));
+buttonActions dialogtouse;
+dialogtouse = OpenDialog;
+  connect(actionOpen, SIGNAL(triggered()), this, SLOT(doAction(1)));
   connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::OpenDialog)));
   connect(actionSave, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
   connect(actionSave_1, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
