@@ -21,7 +21,12 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
   header << "Name" << "Iteration" << "Step";
   treeWidget->setHeaderLabels(header);//assign headers
 
+  //original connect for the opendialog  
+ // connect the signal that opens a new file
+   connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
+
   //connect the signal that opens a new file
+  /**
 buttonActions dialogtouse;
 dialogtouse = OpenDialog;
   connect(actionOpen, SIGNAL(triggered()), this, SLOT(doAction(1)));
@@ -30,7 +35,7 @@ dialogtouse = OpenDialog;
   connect(actionSave_1, SIGNAL(triggered()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
   connect(actionSave_2, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::SaveDialog)));
   connect(actionAnimator, SIGNAL(clicked()), this, SLOT(doAction(enum buttonActions::OpenAnimatorDialog)));
-	
+	*/
   //connect vel
   connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
  
