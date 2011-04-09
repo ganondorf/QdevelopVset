@@ -54,23 +54,36 @@ void ExperimentManager::add(string expStr) {
      
      //loop to add all the models in the list
      //and add all the nodes to the subfolders
-    string iter, stp;
+   QString iter, stp;
+    
      for(i=0;i<models.size();i++){
      	
      	if(models[i].getName()=="icov"){
      	 QTreeWidgetItem *covchild = new QTreeWidgetItem(covItem);
 	     covchild->setText(0, QObject::tr("Coverage"));
-	     iter = models[i].getIteration();
-		 covchild->setText(1, QObject::tr(iter));
-		 stp= (char)models[i].getStep()
-	     covchild->setText(2, QObject::tr());
+	     iter =QString::fromStdString(convertInt(models[i].getIteration()));
+		 covchild->setText(1, iter);
+		 stp= QString::fromStdString(convertInt(models[i].getStep()));
+	     covchild->setText(2, stp);
      		     		
     	}else if(models[i].getName()=="vel"){
-    		
+       
     		
    		}else if(models[i].getName()=="time"){
+   	      QTreeWidgetItem *timechild = new QTreeWidgetItem(timeItem);
+	     timechild->setText(0, QObject::tr("Time"));
+	     iter =QString::fromStdString(convertInt(models[i].getIteration()));
+		 timechild->setText(1, iter);
+		 stp= QString::fromStdString(convertInt(models[i].getStep()));
+	     timechild->setText(2, stp);
    			
   		}else if(models[i].getName()=="dusum"){
+  	     QTreeWidgetItem *duchild = new QTreeWidgetItem(duItem);
+	     duchild->setText(0, QObject::tr("Du"));
+	     iter =QString::fromStdString(convertInt(models[i].getIteration()));
+		 duchild->setText(1, iter);
+		 stp= QString::fromStdString(convertInt(models[i].getStep()));
+	     duchild->setText(2, stp);
   			
  			}
      	
@@ -102,7 +115,7 @@ void ExperimentManager::setTreeWidget(QTreeWidget *TreeWidget){
 //Print list of experiments for debugging purposes
 void ExperimentManager::print_list_of_experiments()
 {
-	for(int i = 0; i < list_of_experiments_.size(); i++)
+	for(unsigned int i = 0; i < list_of_experiments_.size(); i++)
 	{
 		cout << "Experiment at index [" << i << "]: " << (*list_of_experiments_[i]).getprojectName() << endl;
 	}
@@ -114,7 +127,7 @@ void ExperimentManager::remove_experiment(Experiment* to_be_removed)
 {
 	//get index of experiment
 	int index = -1;
-	for(int i = 0; i < list_of_experiments_.size(); i++)
+	for(unsigned int i = 0; i < list_of_experiments_.size(); i++)
 	{
 		if(list_of_experiments_[i] == to_be_removed)
 		{
@@ -138,6 +151,21 @@ vector<Experiment*> ExperimentManager::getList_of_experiments() const
     return list_of_experiments_;
 }
 
+string ExperimentManager::convertInt(int number)
+{
+    if (number == 0)
+        return "0";
+    string temp="";
+    string returnvalue="";
+    while (number>0)
+    {
+        temp+=number%10+48;
+        number/=10;
+    }
+    for (unsigned int i=0;i<temp.length();i++)
+        returnvalue+=temp[temp.length()-i-1];
+    return returnvalue;
+}
 
 //destructor
 ExperimentManager::~ExperimentManager() {

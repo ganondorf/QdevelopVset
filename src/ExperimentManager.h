@@ -8,6 +8,7 @@
 #include "Model.h"
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
+#include <iostream>
 /**
  * Experiment Manager handles the number of Experiments running
  * and adds or removes certain experiments from the list.
@@ -33,7 +34,8 @@ public:
     vector<Experiment*> list_of_experiments_;
     QTreeWidget *treeWidget;
 	    
-    
+ private:
+ 	string convertInt(int number);
 
 };
 
