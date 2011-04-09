@@ -55,8 +55,8 @@ void MainWindowImpl::openSelect()
         //expMan.add(fileName.toStdString(), treeWidget);
 
         vswork.add_experiment(fileName.toStdString());
-        ExperimentManager *a = new ExperimentManager();
-        a->add(fileName.toStdString());
+       // ExperimentManager *a = new ExperimentManager();
+        //a->add(fileName.toStdString());
         refreshTreeItems();
 }
 

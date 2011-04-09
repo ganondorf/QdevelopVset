@@ -98,16 +98,14 @@ void Experiment::parse_paths() {
     vector<string> perturbation_files;
 
     getdir(coverage_path(), coverage_files);
-    getdir(time_path(), time_files);
     getdir(velocity_path(), velocity_files);
+    getdir(time_path(), time_files);
     getdir(perturbation_path(), perturbation_files);
-    
+
     create_models(coverage_files, COVERAGE_MODEL);
-    /*
     create_models(velocity_files, VELOCITY_MODEL);
     create_models(time_files, TIME_MODEL);
     create_models(perturbation_files, PERTURBATION_MODEL);
-*/
 }
 
 string Experiment::coverage_path() {
@@ -128,6 +126,7 @@ string Experiment::perturbation_path() {
 
 //Takes in a path to the directory, stores the files in a vector<string>
 int Experiment::getdir(string path, vector<string> &files) {
+	cout << "Path entering getdir: " << path<<endl;
     DIR *dp;
     struct dirent *dirp;
     if((dp  = opendir(path.c_str())) == NULL) {
@@ -136,20 +135,28 @@ int Experiment::getdir(string path, vector<string> &files) {
     }
     int count = 0;
     while ((dirp = readdir(dp)) != NULL) {
-      if(count>1)
+    if(string(dirp->d_name) != "." && string(dirp->d_name) != "..")
         files.push_back(string(dirp->d_name));
 
       count++;
     }
     closedir(dp);
+    
     return 0;
 }
 
 
 //From the model files, this method creates and stores the models in a vector<Model>
 void Experiment::create_models(vector<string> files, int model_type) {
+	
+	for(unsigned int i = 0; i <= files.size()-1; i++) {
+		// DEBUG cout << i << endl;
+		Model *model = new Model(files.at(i), this);
+		models.push_back(*model);
+	}
+	/**
 	vector<Model> models;
-    for(unsigned int i = 0; i < files.size()-1; i++) {
+    for(unsigned int i = 0; i <= files.size()-1; i++) {
         Model model;
         switch(model_type) {
             case COVERAGE_MODEL:
@@ -168,6 +175,7 @@ void Experiment::create_models(vector<string> files, int model_type) {
         models.push_back(model);
     }
 
+*/
 }
 
 string Experiment::getprojectName() {

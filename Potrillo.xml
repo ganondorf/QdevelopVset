@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<seismicTomoWU>
+<!--Center of Excellence for Sharing resources for the Advancement of Research and Education through Cyberinfrastructure at the University of Texas at El Paso. 
+Seismic Tomography Work Unit-->
+<workspace active="T" modeltype="1">
+  <username>crchacon</username>
+  <projectname>Potrillo</projectname>
+  <projectpath>/home/crchacon/Downloads/QdevelopVset/</projectpath>
+  <iterations>6</iterations>
+  <server>geon.utep.edu</server>
+  <date>Wed Aug 11 01:05:58 MDT 2010</date>
+  <!--Vel 1d - onedimensional model-->
+  <vel1d velSelect="0">
+    <file>/home/crchacon/Downloads/QdevelopVset/vzero.par</file>
+    <h>1.0</h>
+    <x0>0.0</x0>
+    <y0>0.0</y0>
+    <z0>0.0</z0>
+    <x1>230.0</x1>
+    <y1>25.0</y1>
+    <z1>68.0</z1>
+    <zvelpairs/>
+  </vel1d>
+  <!--Punch - Discretized 3D travel time-->
+  <punch>
+    <nx>231</nx>
+    <ny>26</ny>
+    <nz>69</nz>
+    <h>1.0</h>
+    <sp>
+      <floatsrc>0</floatsrc>
+      <xs>1</xs>
+      <ys>2</ys>
+      <zs>3</zs>
+    </sp>
+    <sp>
+      <floatsrc>1</floatsrc>
+      <fxs>1.2</fxs>
+      <fys>1.5</fys>
+      <fzs>5.6</fzs>
+    </sp>
+    <sp>
+      <floatsrc>0</floatsrc>
+      <xs>3</xs>
+      <ys>4</ys>
+      <zs>5</zs>
+    </sp>
+    <sp>
+      <floatsrc>1</floatsrc>
+      <fxs>1.3</fxs>
+      <fys>2.5</fys>
+      <fzs>7.7</fzs>
+    </sp>
+  </punch>
+  <!--Cover - Backtraced cell ray coverage  -->
+  <cover>
+    <spPositionTable>
+      <spPosition floatSr="false" xyz0="1 2 0.0" xyzsrc="0.0 0.0 3"/>
+      <spPosition floatSr="true" xyz0="1.2 1.5 0.0" xyzsrc="0.0 0.0 5.6"/>
+      <spPosition floatSr="false" xyz0="3 4 0.0" xyzsrc="0.0 0.0 5"/>
+      <spPosition floatSr="true" xyz0="1.3 2.5 0.0" xyzsrc="0.0 0.0 7.7"/>
+    </spPositionTable>
+    <stattable loadParamsFromFile="false">
+      <file numstat="0">/home/caca/vsetgit/QdevelopVset/1.stat</file>
+      <file numstat="0">/home/caca/vsetgit/QdevelopVset/2.stat</file>
+      <file numstat="0">/home/caca/vsetgit/QdevelopVset/3.stat</file>
+      <file numstat="0">/home/caca/vsetgit/QdevelopVset/4.stat</file>
+    </stattable>
+    <picktable loadParamsFromFile="false">
+      <file vred="0.0">/home/caca/vsetgit/QdevelopVset/1.pix</file>
+      <file vred="0.0">/home/caca/vsetgit/QdevelopVset/2.pix</file>
+      <file vred="0.0">/home/caca/vsetgit/QdevelopVset/3.pix</file>
+      <file vred="0.0">/home/caca/vsetgit/QdevelopVset/4.pix</file>
+    </picktable>
+  </cover>
+  <smoothing nsmooth="2">
+  <!-- Tomosm - Vertex smoother -->
+  <tomosm loadParamsFromFile="false">
+    <resampling>0</resampling>
+    <ireg>1</ireg>
+    <jreg>1</jreg>
+    <kreg>1</kreg>
+    <smoothertable>
+      <pass smoothx="2" smoothy="4" smoothz="8"/>
+      <pass smoothx="4" smoothy="2" smoothz="8"/>
+    </smoothertable>
+  </tomosm>
+  <!-- Duadd = Moving average vertex smoother-->
+  <duadd loadParamsFromFile="false">
+    <ireg>1</ireg>
+    <jreg>1</jreg>
+    <kreg>1</kreg>
+    <masmtable>
+      <pass mvax="3" mvay="5" mvaz="9"/>
+      <pass mvax="5" mvay="3" mvaz="9"/>
+    </masmtable>
+    <nsmthop>2</nsmthop>
+  </duadd>
+</smoothing>
+</workspace>
+</seismicTomoWU>

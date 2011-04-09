@@ -13,13 +13,21 @@
 // iteration and step
 //Sets the object's path and experiment values to the values passed
 Model::Model(string path, Experiment *experiment) {
+	//cout <<"initial path="<<	path<<endl;
     int slash_pos = path.rfind("/");
     string base_name = path.substr(slash_pos + 1, path.length());
+   //DEBUG  cout <<	base_name<<endl;
     name = base_name.substr(0, base_name.find(".") - 2);
+   //DEBUG cout<<name<<endl;
     iteration = atoi(base_name.substr(base_name.find(".") - 2, 1).c_str());
+  //  cout <<"iteration="<<	iteration<<endl;
+   
     step = atoi(base_name.substr(base_name.find(".") - 1, 1).c_str());
+    //cout <<"step="<<step<<endl;
+   
     this->path = path;
     this->experiment = experiment;
+    
 }
 
 Model::Model() {
