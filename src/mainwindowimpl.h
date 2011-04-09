@@ -36,6 +36,9 @@ private slots:
         void OpenAnimatorWindow();
 	void refreshTreeItems();
         void openVel();
+        void doSlice();
+        void doZoom();
+        void doPan();
 	
 };
 #endif

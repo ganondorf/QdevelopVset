@@ -54,7 +54,7 @@ void MainWindowImpl::openSelect()
 	//add experiment to the vector of experiments in the manager
 	//expMan.add(fileName.toStdString(), treeWidget);
 
-	vswork.add_experiment(fileName.toStdString());
+        vswork.add_experiment(fileName.toStdString());
         refreshTreeItems();
 }
 
@@ -97,6 +97,18 @@ void MainWindowImpl::setCurrentPointer(int currentAction){
         cursor = Qt::ArrowCursor;
     }
     setCursor(cursor);
+}
+
+void MainWindowImpl::doSlice(){
+    //Slicing calls here
+}
+
+void MainWindowImpl::doZoom(){
+    //Zoom calls here
+}
+
+void MainWindowImpl::doPan(){
+    //Pan calls here
 }
 
 void MainWindowImpl::OpenAnimatorWindow(){

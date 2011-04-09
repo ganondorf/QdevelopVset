@@ -111,19 +111,19 @@ void Experiment::parse_paths() {
 }
 
 string Experiment::coverage_path() {
-  return project_path + "/Model/RayCov";
+  return project_path + "Model/RayCov";
 }
 
 string Experiment::time_path() {
-  return project_path + "/Model/Time";
+  return project_path + "Model/Time";
 }
 
 string Experiment::velocity_path() {
-  return project_path + "/Model/Vel";
+  return project_path + "Model/Vel";
 }
 
 string Experiment::perturbation_path() {
-  return project_path + "/Model/VelPer";
+  return project_path + "Model/VelPer";
 }
 
 //Takes in a path to the directory, stores the files in a vector<string>
