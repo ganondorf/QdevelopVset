@@ -111,19 +111,19 @@ void Experiment::parse_paths() {
 }
 
 string Experiment::coverage_path() {
-  return project_path + "/Model/RayCov";
+  return project_path + "Model/RayCov";
 }
 
 string Experiment::time_path() {
-  return project_path + "/Model/Time";
+  return project_path + "Model/Time";
 }
 
 string Experiment::velocity_path() {
-  return project_path + "/Model/Vel";
+  return project_path + "Model/Vel";
 }
 
 string Experiment::perturbation_path() {
-  return project_path + "/Model/VelPer";
+  return project_path + "Model/VelPer";
 }
 
 //Takes in a path to the directory, stores the files in a vector<string>
@@ -149,7 +149,12 @@ int Experiment::getdir(string path, vector<string> &files) {
 //From the model files, this method creates and stores the models in a vector<Model>
 void Experiment::create_models(vector<string> files, int model_type) {
 	vector<Model> models;
-    for(unsigned int i = 0; i < files.size()-1; i++) {
+	
+	int i, vectorSize;
+	vectorSize = files.size();
+	//printf("The value of Vector Size is: %d \n", vectorSize);
+   for(i = 0; i <= vectorSize-1; i++) {
+  	 //for(i = 0; i <= 2; i++) {
         Model model;
         switch(model_type) {
             case COVERAGE_MODEL:
