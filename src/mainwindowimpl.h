@@ -25,6 +25,7 @@ public:
 	void setCurrentPointer(int currentAction);
         void setBINfile(QString currentFile){binFile = currentFile;}//set the name of the bin file to save
         bool getBINfile(){return (binFile!= NULL);}//Check if the current project is saved
+        int getEnumVal(buttonActions action);
 
 private:
         QString binFile;
@@ -34,8 +35,10 @@ private slots:
         void saveFile();
         void OpenAnimatorWindow();
 	void refreshTreeItems();
-	void openVel();
-        void doAction(int currentAction);
+        void openVel();
+        void doSlice();
+        void doZoom();
+        void doPan();
 	
 };
 #endif
