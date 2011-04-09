@@ -148,8 +148,19 @@ int Experiment::getdir(string path, vector<string> &files) {
 
 //From the model files, this method creates and stores the models in a vector<Model>
 void Experiment::create_models(vector<string> files, int model_type) {
+<<<<<<< HEAD
     for(unsigned int i = 0; i < files.size()-1; i++) {
         Model *model;
+=======
+	vector<Model> models;
+	
+	int i, vectorSize;
+	vectorSize = files.size();
+	//printf("The value of Vector Size is: %d \n", vectorSize);
+   for(i = 0; i <= vectorSize-1; i++) {
+  	 //for(i = 0; i <= 2; i++) {
+        Model model;
+>>>>>>> cesar/master
         switch(model_type) {
             case COVERAGE_MODEL:
                 model = new CoverageModel(files.at(i), this);
