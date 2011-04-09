@@ -52,7 +52,7 @@ void MainWindowImpl::openSelect()
 	);
 	
 	//add experiment to the vector of experiments in the manager
-	//expMan.add(fileName.toStdString(), treeWidget);
+        //expMan.add(fileName.toStdString(), treeWidget);
 
         vswork.add_experiment(fileName.toStdString());
         refreshTreeItems();

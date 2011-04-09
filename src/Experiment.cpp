@@ -148,24 +148,23 @@ int Experiment::getdir(string path, vector<string> &files) {
 
 //From the model files, this method creates and stores the models in a vector<Model>
 void Experiment::create_models(vector<string> files, int model_type) {
-	vector<Model> models;
     for(unsigned int i = 0; i < files.size()-1; i++) {
-        Model model;
+        Model *model;
         switch(model_type) {
             case COVERAGE_MODEL:
-                model = CoverageModel(files.at(i), this);
+                model = new CoverageModel(files.at(i), this);
                 break;
             case VELOCITY_MODEL:
-                model = VelocityModel(files.at(i), this);
+                model = new VelocityModel(files.at(i), this);
                 break;
             case TIME_MODEL:
-                model = TimeModel(files.at(i), this);
+                model = new TimeModel(files.at(i), this);
                 break;
             case PERTURBATION_MODEL:
-                model = PerturbationModel(files.at(i), this);
+                model = new PerturbationModel(files.at(i), this);
                 break;
         }
-        models.push_back(model);
+        models.push_back(*model);
     }
 
 }

@@ -16,22 +16,22 @@
 void ExperimentManager::add(string expStr) {
 
  Experiment new_experiment = Experiment(expStr);
- //list_of_experiments_.push_back(&new_experiment);
-/* 
+ list_of_experiments_.push_back(&new_experiment);
+/*
  //create the root node    
     QTreeWidgetItem *item = new QTreeWidgetItem(treeWidget);
     // item->setText(0, tr("Potrillo"));
     QString projectName = QString::fromStdString(new_experiment.getprojectName());
     item->setText(0, projectName);
-  */  
-    
+  */
+
   // models =  new_experiment.getModels();
    //unsigned int i;
    //for(i=0;i<models.size();i++){
-   	//printf("%s", models[i].getName());
+        //printf("%s", models[i].getName());
    	
-  	//}
-//debugging selected file String URL 
+        //}
+//debugging selected file String URL
 /*
  QMessageBox msgBox;
  QString qstr = QString::fromStdString(new_experiment.getprojectName());
@@ -40,15 +40,15 @@ void ExperimentManager::add(string expStr) {
  */
  
 /**
-  *     
+  *
     Experiment *temp;
     temp = new Experiment(expStr);
-         
+
     models =temp->getModels();
-	int i ;  
+        int i ;
     for(i=0;i<models.size();i++){
-    	printf("%s",models[i].getName());
-    	
+        printf("%s",models[i].getName());
+
     	
    	}
    	
