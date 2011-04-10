@@ -1,6 +1,6 @@
 /* 
  * File:   Experiment.cpp
- * Author: ahlatimer
+ * Author: Andrew Lahtimer, Cesar Chacon, Alexandria Ogrey.
  * 
  * Created on March 4, 2011, 8:07 PM
  * 
@@ -32,6 +32,9 @@ const int COVERAGE_MODEL = 1;
 const int VELOCITY_MODEL = 2;
 const int TIME_MODEL = 3;
 const int PERTURBATION_MODEL = 4;
+const int SMOOTHER1_MODEL= 5;
+const int SMOOTHER2_MODEL = 6;
+//const int FINALFILES_MODEL = 7;
 
 //Constructor
 Experiment::Experiment(string f) {
@@ -96,16 +99,25 @@ void Experiment::parse_paths() {
     vector<string> time_files;
     vector<string> velocity_files;
     vector<string> perturbation_files;
+    vector<string> smoother1_files;
+    vector<string> smoother2_files;
+   // vector<string> finalfiles_files;
 
     getdir(coverage_path(), coverage_files);
     getdir(velocity_path(), velocity_files);
     getdir(time_path(), time_files);
     getdir(perturbation_path(), perturbation_files);
+    getdir(smoother1_path(), smoother1_files);
+    getdir(smoother2_path(), smoother2_files);
+    //getdir(finalfiles_path(), finalfiles_files);
 
     create_models(coverage_files, COVERAGE_MODEL);
     create_models(velocity_files, VELOCITY_MODEL);
     create_models(time_files, TIME_MODEL);
     create_models(perturbation_files, PERTURBATION_MODEL);
+    create_models(smoother1_files, SMOOTHER1_MODEL);
+    create_models(smoother2_files, SMOOTHER2_MODEL);
+   // create_models(finalfiles_files, FINALFILES_MODEL);
 }
 
 string Experiment::coverage_path() {
@@ -123,6 +135,22 @@ string Experiment::velocity_path() {
 string Experiment::perturbation_path() {
   return project_path + "Model/VelPer";
 }
+
+string Experiment::smoother1_path() {
+  return project_path + "Model/smoother1";
+}
+
+string Experiment::smoother2_path() {
+  return project_path + "Model/smoother2";
+}
+
+/*
+string Experiment::finalfiles_path() {
+  return project_path + "Model/OutDir";
+}
+*/
+
+
 
 //Takes in a path to the directory, stores the files in a vector<string>
 int Experiment::getdir(string path, vector<string> &files) {
