@@ -23,7 +23,7 @@ void ExperimentManager::add(string expStr) {
 
   models= new_experiment.getModels();
   
-    sort (models.begin(), models.begin()+models.size())
+    
  //DEBUGGING LOOP
    for(i=0;i<models.size();i++){
    cout<<"model "<<i<<" name "<<models[i].getName()<<models[i].getStep() <<endl;
@@ -109,9 +109,13 @@ void ExperimentManager::add(string expStr) {
         //printf("%s", models[i].getName());
    	
         //}
+        treeWidget->setSortingEnabled(true);
 treeWidget->resizeColumnToContents(1);
 treeWidget->resizeColumnToContents(2);
 treeWidget->resizeColumnToContents(3);
+treeWidget->sortItems(1, Qt::AscendingOrder);
+treeWidget->sortItems(2, Qt::AscendingOrder);
+treeWidget->sortItems(3, Qt::AscendingOrder);
 
 }
 
@@ -183,4 +187,3 @@ string ExperimentManager::convertInt(int number)
 ExperimentManager::~ExperimentManager() {
 
 }
-
