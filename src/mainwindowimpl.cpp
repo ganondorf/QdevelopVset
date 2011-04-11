@@ -19,7 +19,7 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
   treeWidget->setColumnCount(3);
   QStringList header;//EP Header
   header << "Name" << "Iteration" << "Step";
-  treeWidget->setHeaderLabels(header);//assign headers
+  treeWidget->setHeaderLabels(header);//Assign headers
 
   //connect the signal related to the top bars
   connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
