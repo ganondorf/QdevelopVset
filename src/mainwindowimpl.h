@@ -28,6 +28,7 @@ public:
         int getEnumVal(buttonActions action);
 
 private:
+  std::string intToString(int i);
         QString binFile;
 
 private slots:

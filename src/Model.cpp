@@ -48,6 +48,7 @@ Model::~Model() {
    	}
    	
 void Model::render() {
-  cout << "Rendering!";
+  cout << "Rendering!\n";
+  return;
 }
 

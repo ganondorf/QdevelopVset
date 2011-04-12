@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QtGui>
 #include "mainwindowimpl.h"
+#include <sstream>
 
 
 
@@ -241,15 +242,22 @@ void MainWindowImpl::openModel(QTreeWidgetItem *item) {
     model_type = "dvaa";
   }
   
-  cout << model_type << " " << iteration << " " << step << "\n";
   for(int i = 0; i < models.size(); i++) {
-    iteration = (models[i].getIteration() + "");
-    step = (models[i].getStep() + "");
-    cout << "Looking for models: " << iteration << " " << step << "\n";
+    iteration = intToString(models[i].getIteration());
+    step = intToString(models[i].getStep());
     if(models[i].getName() == model_type && item->text(1) == QString::fromStdString(iteration) && item->text(2) == QString::fromStdString(step)) {
-      cout << "Found the model\n";
       models[i].render();
       return;
     }
   }
+}
+
+std::string MainWindowImpl::intToString(int i)
+{
+    std::stringstream ss;
+    std::string s;
+    ss << i;
+    s = ss.str();
+
+    return s;
 }
