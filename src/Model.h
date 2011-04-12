@@ -91,5 +91,21 @@ private:
 
 };
 
+class SmootherModel: public Model {
+public:
+    SmootherModel(string p, Experiment *exp);
+    virtual ~SmootherModel();
+private:
+
+};
+/**
+class SmootherModel: public Model {
+public:
+    SmootherModel(string p, Experiment *exp);
+    virtual ~SmootherModel();
+private:
+
+};**/
+
 #endif	/* MODEL_H */
 

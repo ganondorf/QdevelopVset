@@ -1,6 +1,6 @@
 /* 
  * File:   Experiment.h
- * Author: Andrew Lahtimer, Cesar Chacon, Alexandria Ogrey
+ * Author: ahlatimer
  *
  * Created on March 4, 2011, 8:07 PM
  */
@@ -64,9 +64,9 @@ private:
     string perturbation_path();
     string smoother1_path();
     string smoother2_path();
-   /* string finalfiles_path();*/
-    
-    
+    string finalfiles_path();
+
+
     int getdir(string path, vector<string> &files);
     /* METHODS END */
 

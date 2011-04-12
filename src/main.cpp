@@ -15,5 +15,5 @@ int main(int argc, char ** argv)
 	win.show(); 
 	//connect the signal to close the window
 	app.connect( &app, SIGNAL( lastWindowClosed() ), &app, SLOT( quit() ) );
-        return app.exec();
+	return app.exec();
 }

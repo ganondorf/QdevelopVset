@@ -33,6 +33,9 @@
        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,0,0,0,0,0,0,0,0,1">
         <item>
          <widget class="QToolButton" name="actionOpen_2">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>open</string>
           </property>
@@ -44,6 +47,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="actionSave_2">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>save</string>
           </property>
@@ -55,6 +61,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="toolButton_3">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>snapshot</string>
           </property>
@@ -66,6 +75,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="actionAnimator">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Animate</string>
           </property>
@@ -76,7 +88,10 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButton_5">
+         <widget class="QToolButton" name="actionSlice_1">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Slice</string>
           </property>
@@ -88,6 +103,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="toolButton_6">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Rotateleft</string>
           </property>
@@ -99,6 +117,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="toolButton_9">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Rotateright</string>
           </property>
@@ -109,7 +130,10 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButton_7">
+         <widget class="QToolButton" name="actionZoom_1">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Zoom</string>
           </property>
@@ -117,16 +141,40 @@
            <iconset>
             <normaloff>zoom.png</normaloff>zoom.png</iconset>
           </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <property name="autoRepeat">
+           <bool>false</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="toolButton_8">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Help</string>
           </property>
           <property name="icon">
            <iconset>
             <normaloff>help.jpg</normaloff>help.jpg</iconset>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="autoRaise">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -299,7 +347,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>27</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -331,6 +379,10 @@
     <property name="title">
      <string>Tools</string>
     </property>
+    <addaction name="actionZoom"/>
+    <addaction name="actionPan"/>
+    <addaction name="actionRotate"/>
+    <addaction name="actionSlice"/>
    </widget>
    <widget class="QMenu" name="menuSubwindows">
     <property name="title">
@@ -409,6 +461,26 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionZoom">
+   <property name="text">
+    <string>Zoom</string>
+   </property>
+  </action>
+  <action name="actionPan">
+   <property name="text">
+    <string>Pan</string>
+   </property>
+  </action>
+  <action name="actionRotate">
+   <property name="text">
+    <string>Rotate</string>
+   </property>
+  </action>
+  <action name="actionSlice">
+   <property name="text">
+    <string>Slice</string>
    </property>
   </action>
  </widget>
