@@ -14,26 +14,41 @@
 MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f) 
 	: QMainWindow(parent, f)
 {
-	setupUi(this);
-	//initialize Experiment Manager
-  treeWidget->setColumnCount(3);
-  QStringList header;//EP Header
-  header << "Name" << "Iteration" << "Step";
-  treeWidget->setHeaderLabels(header);//assign headers
+    setupUi(this);
+    //initialize Experiment Manager
+      treeWidget->setColumnCount(3);
+      QStringList header;//EP Header
+      header << "Name" << "Iteration" << "Step";
+      treeWidget->setHeaderLabels(header);//assign headers
 
-  //connect the signal related to the top bars
-  connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
-  connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(openSelect()));
-  connect(actionSave, SIGNAL(triggered()), this, SLOT(saveFile()));
-  connect(actionSave_1, SIGNAL(triggered()), this, SLOT(saveFile()));
-  connect(actionSave_2, SIGNAL(clicked()), this, SLOT(saveFile()));
-  connect(actionAnimator, SIGNAL(clicked()), this, SLOT(OpenAnimatorWindow()));
-	
-  //connect vel
-  connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
- 
-  //vswork connect widgets to references
-  vswork.setTree(treeWidget);
+      //connect the signal related to the top bars
+      connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
+      connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(openSelect()));
+      connect(actionSave, SIGNAL(triggered()), this, SLOT(saveFile()));
+      connect(actionSave_1, SIGNAL(triggered()), this, SLOT(saveFile()));
+      connect(actionSave_2, SIGNAL(clicked()), this, SLOT(saveFile()));
+      connect(actionAnimator, SIGNAL(clicked()), this, SLOT(OpenAnimatorWindow()));
+      connect(actionZoom_1, SIGNAL(clicked()), this, SLOT(doZoom()));
+      connect(actionZoom, SIGNAL(triggered()), this, SLOT(doZoom()));
+      connect(actionSlice, SIGNAL(triggered()), this, SLOT(doSlice()));
+      connect(actionSlice_1, SIGNAL(clicked()), this, SLOT(doSlice()));
+      connect(actionPan, SIGNAL(triggered()), this, SLOT(doPan()));
+      connect(actionRotate, SIGNAL(triggered()), this, SLOT(doRotate()));
+
+      //connect vel
+      connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
+
+      //vswork connect widgets to references
+      vswork.setTree(treeWidget);
+
+      //Initialize custom cursor pointers
+      QBitmap zoomB("zoom.png");
+      QBitmap rotateB("rotate.jpeg");
+      QBitmap sliceB("slice.png");
+      zoomCursor = QCursor(zoomB, -1, -1);
+      rotateCursor = QCursor(rotateB, -1, -1);
+      sliceCursor = QCursor(sliceB, -1, -1);
+
  }
 //
 
@@ -55,8 +70,6 @@ void MainWindowImpl::openSelect()
         //expMan.add(fileName.toStdString(), treeWidget);
 
         vswork.add_experiment(fileName.toStdString());
-       // ExperimentManager *a = new ExperimentManager();
-        //a->add(fileName.toStdString());
         refreshTreeItems();
 }
 
@@ -77,41 +90,83 @@ void MainWindowImpl::saveFile(){
     }
 }
 
-int MainWindowImpl::getEnumVal(buttonActions action){
-    return action;
+//Check for key events
+void MainWindowImpl::keyPressEvent( QKeyEvent * event ){
+    switch ( event->key() ){
+
+        case Qt::Key_Escape:
+
+            setCurrentPointer(-1);
+            break;
+        default:break;
+
+    }
+}
+
+//Stop current action
+void MainWindowImpl::stopAction(int action){
+
+    switch(action){
+    case Slice:
+        break;
+    case Zoom:
+        break;
+    case Pan:
+        break;
+    case Rotate:
+        break;
+
+    }
 }
 
 //Change current Cursor POinter according to the current action
-void MainWindowImpl::setCurrentPointer(int currentAction){
+void MainWindowImpl::setCurrentPointer(int nextAction){
 
     QCursor cursor = NULL;
-    switch(currentAction){
+    if(currentAction == nextAction){
+        nextAction = -1;
+        stopAction(currentAction);
+    }
+    switch(nextAction){
     case Slice:
-        cursor = Qt::CrossCursor;
+        cursor = sliceCursor;
         break;
     case Zoom:
-        cursor = Qt::CrossCursor;
+        cursor = zoomCursor;
         break;
     case Pan:
-        cursor = Qt::CrossCursor;
+        cursor = Qt::OpenHandCursor;
+        break;
+    case Rotate:
+        cursor = rotateCursor;
         break;
     default:
         cursor = Qt::ArrowCursor;
     }
     setCursor(cursor);
+    currentAction = nextAction;
 }
 
 void MainWindowImpl::doSlice(){
     //Slicing calls here
+    setCurrentPointer(Slice);
 }
 
 void MainWindowImpl::doZoom(){
     //Zoom calls here
+    setCurrentPointer(Zoom);
 }
 
 void MainWindowImpl::doPan(){
     //Pan calls here
+    setCurrentPointer(Pan);
 }
+
+void MainWindowImpl::doRotate(){
+    //Rotate calls here
+    setCurrentPointer(Rotate);
+}
+
 
 void MainWindowImpl::OpenAnimatorWindow(){
 

@@ -5,6 +5,11 @@
 TEMPLATE = app
 TARGET = 
 DEPENDPATH += . build src ui
+DESTDIR = bin
+QT = gui core
+OBJECTS_DIR = build
+MOC_DIR = build
+UI_DIR = build 
 INCLUDEPATH += . src build
 DESTDIR = bin
 OBJECTS_DIR = build

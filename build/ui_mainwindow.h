@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sat Apr 9 19:10:57 2011
+** Created: Mon Apr 11 18:05:51 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -47,6 +47,10 @@ public:
     QAction *actionOptions;
     QAction *actionVisual_Analytics_Help;
     QAction *actionAbout;
+    QAction *actionZoom;
+    QAction *actionPan;
+    QAction *actionRotate;
+    QAction *actionSlice;
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_6;
     QVBoxLayout *verticalLayout_4;
@@ -55,10 +59,10 @@ public:
     QToolButton *actionSave_2;
     QToolButton *toolButton_3;
     QToolButton *actionAnimator;
-    QToolButton *toolButton_5;
+    QToolButton *actionSlice_1;
     QToolButton *toolButton_6;
     QToolButton *toolButton_9;
-    QToolButton *toolButton_7;
+    QToolButton *actionZoom_1;
     QToolButton *toolButton_8;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_3;
@@ -124,6 +128,14 @@ public:
         actionVisual_Analytics_Help->setObjectName(QString::fromUtf8("actionVisual_Analytics_Help"));
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+        actionZoom = new QAction(MainWindow);
+        actionZoom->setObjectName(QString::fromUtf8("actionZoom"));
+        actionPan = new QAction(MainWindow);
+        actionPan->setObjectName(QString::fromUtf8("actionPan"));
+        actionRotate = new QAction(MainWindow);
+        actionRotate->setObjectName(QString::fromUtf8("actionRotate"));
+        actionSlice = new QAction(MainWindow);
+        actionSlice->setObjectName(QString::fromUtf8("actionSlice"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         verticalLayout_6 = new QVBoxLayout(centralwidget);
@@ -134,6 +146,7 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         actionOpen_2 = new QToolButton(centralwidget);
         actionOpen_2->setObjectName(QString::fromUtf8("actionOpen_2"));
+        actionOpen_2->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon;
         icon.addFile(QString::fromUtf8("open.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionOpen_2->setIcon(icon);
@@ -142,6 +155,7 @@ public:
 
         actionSave_2 = new QToolButton(centralwidget);
         actionSave_2->setObjectName(QString::fromUtf8("actionSave_2"));
+        actionSave_2->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8("save.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionSave_2->setIcon(icon1);
@@ -150,6 +164,7 @@ public:
 
         toolButton_3 = new QToolButton(centralwidget);
         toolButton_3->setObjectName(QString::fromUtf8("toolButton_3"));
+        toolButton_3->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8("snap.png"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_3->setIcon(icon2);
@@ -158,22 +173,25 @@ public:
 
         actionAnimator = new QToolButton(centralwidget);
         actionAnimator->setObjectName(QString::fromUtf8("actionAnimator"));
+        actionAnimator->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon3;
         icon3.addFile(QString::fromUtf8("Video-Icon6-150x150.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         actionAnimator->setIcon(icon3);
 
         horizontalLayout_4->addWidget(actionAnimator);
 
-        toolButton_5 = new QToolButton(centralwidget);
-        toolButton_5->setObjectName(QString::fromUtf8("toolButton_5"));
+        actionSlice_1 = new QToolButton(centralwidget);
+        actionSlice_1->setObjectName(QString::fromUtf8("actionSlice_1"));
+        actionSlice_1->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon4;
         icon4.addFile(QString::fromUtf8("slice.gif"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton_5->setIcon(icon4);
+        actionSlice_1->setIcon(icon4);
 
-        horizontalLayout_4->addWidget(toolButton_5);
+        horizontalLayout_4->addWidget(actionSlice_1);
 
         toolButton_6 = new QToolButton(centralwidget);
         toolButton_6->setObjectName(QString::fromUtf8("toolButton_6"));
+        toolButton_6->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon5;
         icon5.addFile(QString::fromUtf8("rl.png"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_6->setIcon(icon5);
@@ -182,25 +200,35 @@ public:
 
         toolButton_9 = new QToolButton(centralwidget);
         toolButton_9->setObjectName(QString::fromUtf8("toolButton_9"));
+        toolButton_9->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon6;
         icon6.addFile(QString::fromUtf8("rr.png"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_9->setIcon(icon6);
 
         horizontalLayout_4->addWidget(toolButton_9);
 
-        toolButton_7 = new QToolButton(centralwidget);
-        toolButton_7->setObjectName(QString::fromUtf8("toolButton_7"));
+        actionZoom_1 = new QToolButton(centralwidget);
+        actionZoom_1->setObjectName(QString::fromUtf8("actionZoom_1"));
+        actionZoom_1->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon7;
         icon7.addFile(QString::fromUtf8("zoom.png"), QSize(), QIcon::Normal, QIcon::Off);
-        toolButton_7->setIcon(icon7);
+        actionZoom_1->setIcon(icon7);
+        actionZoom_1->setCheckable(false);
+        actionZoom_1->setChecked(false);
+        actionZoom_1->setAutoRepeat(false);
+        actionZoom_1->setAutoExclusive(false);
 
-        horizontalLayout_4->addWidget(toolButton_7);
+        horizontalLayout_4->addWidget(actionZoom_1);
 
         toolButton_8 = new QToolButton(centralwidget);
         toolButton_8->setObjectName(QString::fromUtf8("toolButton_8"));
+        toolButton_8->setCursor(QCursor(Qt::PointingHandCursor));
+        toolButton_8->setAutoFillBackground(false);
         QIcon icon8;
         icon8.addFile(QString::fromUtf8("help.jpg"), QSize(), QIcon::Normal, QIcon::Off);
         toolButton_8->setIcon(icon8);
+        toolButton_8->setCheckable(false);
+        toolButton_8->setAutoRaise(false);
 
         horizontalLayout_4->addWidget(toolButton_8);
 
@@ -333,7 +361,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 27));
+        menubar->setGeometry(QRect(0, 0, 800, 25));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -364,6 +392,10 @@ public:
         menuEdit->addAction(actionCopy);
         menuEdit->addAction(actionPaste);
         menuEdit->addAction(actionOptions);
+        menuTools->addAction(actionZoom);
+        menuTools->addAction(actionPan);
+        menuTools->addAction(actionRotate);
+        menuTools->addAction(actionSlice);
         menuHelp->addAction(actionVisual_Analytics_Help);
         menuHelp->addAction(actionAbout);
 
@@ -387,14 +419,18 @@ public:
         actionOptions->setText(QApplication::translate("MainWindow", "Options", 0, QApplication::UnicodeUTF8));
         actionVisual_Analytics_Help->setText(QApplication::translate("MainWindow", "Visual Analytics Help", 0, QApplication::UnicodeUTF8));
         actionAbout->setText(QApplication::translate("MainWindow", "About", 0, QApplication::UnicodeUTF8));
+        actionZoom->setText(QApplication::translate("MainWindow", "Zoom", 0, QApplication::UnicodeUTF8));
+        actionPan->setText(QApplication::translate("MainWindow", "Pan", 0, QApplication::UnicodeUTF8));
+        actionRotate->setText(QApplication::translate("MainWindow", "Rotate", 0, QApplication::UnicodeUTF8));
+        actionSlice->setText(QApplication::translate("MainWindow", "Slice", 0, QApplication::UnicodeUTF8));
         actionOpen_2->setText(QApplication::translate("MainWindow", "open", 0, QApplication::UnicodeUTF8));
         actionSave_2->setText(QApplication::translate("MainWindow", "save", 0, QApplication::UnicodeUTF8));
         toolButton_3->setText(QApplication::translate("MainWindow", "snapshot", 0, QApplication::UnicodeUTF8));
         actionAnimator->setText(QApplication::translate("MainWindow", "Animate", 0, QApplication::UnicodeUTF8));
-        toolButton_5->setText(QApplication::translate("MainWindow", "Slice", 0, QApplication::UnicodeUTF8));
+        actionSlice_1->setText(QApplication::translate("MainWindow", "Slice", 0, QApplication::UnicodeUTF8));
         toolButton_6->setText(QApplication::translate("MainWindow", "Rotateleft", 0, QApplication::UnicodeUTF8));
         toolButton_9->setText(QApplication::translate("MainWindow", "Rotateright", 0, QApplication::UnicodeUTF8));
-        toolButton_7->setText(QApplication::translate("MainWindow", "Zoom", 0, QApplication::UnicodeUTF8));
+        actionZoom_1->setText(QApplication::translate("MainWindow", "Zoom", 0, QApplication::UnicodeUTF8));
         toolButton_8->setText(QApplication::translate("MainWindow", "Help", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "ExperimentsWindow", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "Filter By: ", 0, QApplication::UnicodeUTF8));

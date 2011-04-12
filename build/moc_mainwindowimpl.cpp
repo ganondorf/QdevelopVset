@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindowimpl.h'
 **
-** Created: Sat Apr 9 19:11:23 2011
+** Created: Mon Apr 11 20:17:11 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindowImpl[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,6 +39,8 @@ static const uint qt_meta_data_MainWindowImpl[] = {
       90,   15,   15,   15, 0x08,
      100,   15,   15,   15, 0x08,
      109,   15,   15,   15, 0x08,
+     117,   15,   15,   15, 0x08,
+     134,  128,   15,   15, 0x08,
 
        0        // eod
 };
@@ -47,6 +49,7 @@ static const char qt_meta_stringdata_MainWindowImpl[] = {
     "MainWindowImpl\0\0openSelect()\0saveFile()\0"
     "OpenAnimatorWindow()\0refreshTreeItems()\0"
     "openVel()\0doSlice()\0doZoom()\0doPan()\0"
+    "doRotate()\0event\0keyPressEvent(QKeyEvent*)\0"
 };
 
 const QMetaObject MainWindowImpl::staticMetaObject = {
@@ -88,9 +91,11 @@ int MainWindowImpl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 5: doSlice(); break;
         case 6: doZoom(); break;
         case 7: doPan(); break;
+        case 8: doRotate(); break;
+        case 9: keyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 8;
+        _id -= 10;
     }
     return _id;
 }

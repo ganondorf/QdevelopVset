@@ -1,6 +1,6 @@
 /* 
  * File:   Experiment.cpp
- * Author: Andrew Lahtimer, Cesar Chacon, Alexandria Ogrey.
+ * Author: ahlatimer
  * 
  * Created on March 4, 2011, 8:07 PM
  * 
@@ -101,23 +101,23 @@ void Experiment::parse_paths() {
     vector<string> perturbation_files;
     vector<string> smoother1_files;
     vector<string> smoother2_files;
-   // vector<string> finalfiles_files;
 
     getdir(coverage_path(), coverage_files);
-    getdir(velocity_path(), velocity_files);
     getdir(time_path(), time_files);
+    getdir(velocity_path(), velocity_files);
     getdir(perturbation_path(), perturbation_files);
     getdir(smoother1_path(), smoother1_files);
     getdir(smoother2_path(), smoother2_files);
     //getdir(finalfiles_path(), finalfiles_files);
-
-    create_models(coverage_files, COVERAGE_MODEL);
+    
+    create_models(coverage_files, COVERAGE_MODEL);    
     create_models(velocity_files, VELOCITY_MODEL);
     create_models(time_files, TIME_MODEL);
     create_models(perturbation_files, PERTURBATION_MODEL);
     create_models(smoother1_files, SMOOTHER1_MODEL);
     create_models(smoother2_files, SMOOTHER2_MODEL);
-   // create_models(finalfiles_files, FINALFILES_MODEL);
+    //create_models(finalfiles_files, FINALFILES_MODEL);
+
 }
 
 string Experiment::coverage_path() {
@@ -144,17 +144,12 @@ string Experiment::smoother2_path() {
   return project_path + "Model/smoother2";
 }
 
-/*
 string Experiment::finalfiles_path() {
   return project_path + "Model/OutDir";
 }
-*/
-
-
 
 //Takes in a path to the directory, stores the files in a vector<string>
 int Experiment::getdir(string path, vector<string> &files) {
-	cout << "Path entering getdir: " << path<<endl;
     DIR *dp;
     struct dirent *dirp;
     if((dp  = opendir(path.c_str())) == NULL) {
@@ -163,47 +158,45 @@ int Experiment::getdir(string path, vector<string> &files) {
     }
     int count = 0;
     while ((dirp = readdir(dp)) != NULL) {
-    if(string(dirp->d_name) != "." && string(dirp->d_name) != "..")
-        files.push_back(string(dirp->d_name));
+        if(string(dirp->d_name) != "." && string(dirp->d_name) != "..")
+            files.push_back(string(dirp->d_name));
 
       count++;
     }
     closedir(dp);
-    
+
+
     return 0;
 }
 
 
 //From the model files, this method creates and stores the models in a vector<Model>
 void Experiment::create_models(vector<string> files, int model_type) {
-	
-	for(unsigned int i = 0; i <= files.size()-1; i++) {
-		// DEBUG cout << i << endl;
-		Model *model = new Model(files.at(i), this);
-		models.push_back(*model);
-	}
-	/**
-	vector<Model> models;
-    for(unsigned int i = 0; i <= files.size()-1; i++) {
-        Model model;
+    for(unsigned int i = 0; i < files.size(); i++) {
+        Model *model;
         switch(model_type) {
             case COVERAGE_MODEL:
-                model = CoverageModel(files.at(i), this);
+                model = new CoverageModel(files.at(i), this);
                 break;
             case VELOCITY_MODEL:
-                model = VelocityModel(files.at(i), this);
+                model = new VelocityModel(files.at(i), this);
                 break;
             case TIME_MODEL:
-                model = TimeModel(files.at(i), this);
+                model = new TimeModel(files.at(i), this);
                 break;
             case PERTURBATION_MODEL:
-                model = PerturbationModel(files.at(i), this);
+                model = new PerturbationModel(files.at(i), this);
+                break;
+            case SMOOTHER1_MODEL:
+                model = new Model(files.at(i), this);
+                break;
+            case SMOOTHER2_MODEL:
+                model = new Model(files.at(i), this);
                 break;
         }
-        models.push_back(model);
+        models.push_back(*model);
     }
 
-*/
 }
 
 string Experiment::getprojectName() {

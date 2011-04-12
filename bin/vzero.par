@@ -1,0 +1,16 @@
+/home/crchacon/residualstg/vel.1d
+/home/crchacon/residualstg/Model/OutDir/vel.3d
+1.
+0. 0. 0.
+230. 25. 68.
+8
+0.000  3.0000
+7.12   3.6785
+9.52  5.4156
+14.32  6.0472
+40.72 6.7939
+46.12 7.9407
+58.12 8.0602
+68.00 8.0000
+hello
+END
