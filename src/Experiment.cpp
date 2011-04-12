@@ -32,6 +32,9 @@ const int COVERAGE_MODEL = 1;
 const int VELOCITY_MODEL = 2;
 const int TIME_MODEL = 3;
 const int PERTURBATION_MODEL = 4;
+const int SMOOTHER1_MODEL= 5;
+const int SMOOTHER2_MODEL = 6;
+//const int FINALFILES_MODEL = 7;
 
 //Constructor
 Experiment::Experiment(string f) {
@@ -96,18 +99,25 @@ void Experiment::parse_paths() {
     vector<string> time_files;
     vector<string> velocity_files;
     vector<string> perturbation_files;
+    vector<string> smoother1_files;
+    vector<string> smoother2_files;
 
     getdir(coverage_path(), coverage_files);
     getdir(time_path(), time_files);
     getdir(velocity_path(), velocity_files);
     getdir(perturbation_path(), perturbation_files);
+    getdir(smoother1_path(), smoother1_files);
+    getdir(smoother2_path(), smoother2_files);
+    //getdir(finalfiles_path(), finalfiles_files);
     
-    create_models(coverage_files, COVERAGE_MODEL);
-    /*
+    create_models(coverage_files, COVERAGE_MODEL);    
     create_models(velocity_files, VELOCITY_MODEL);
     create_models(time_files, TIME_MODEL);
     create_models(perturbation_files, PERTURBATION_MODEL);
-*/
+    create_models(smoother1_files, SMOOTHER1_MODEL);
+    create_models(smoother2_files, SMOOTHER2_MODEL);
+    //create_models(finalfiles_files, FINALFILES_MODEL);
+
 }
 
 string Experiment::coverage_path() {
@@ -126,6 +136,18 @@ string Experiment::perturbation_path() {
   return project_path + "Model/VelPer";
 }
 
+string Experiment::smoother1_path() {
+  return project_path + "Model/smoother1";
+}
+
+string Experiment::smoother2_path() {
+  return project_path + "Model/smoother2";
+}
+
+string Experiment::finalfiles_path() {
+  return project_path + "Model/OutDir";
+}
+
 //Takes in a path to the directory, stores the files in a vector<string>
 int Experiment::getdir(string path, vector<string> &files) {
     DIR *dp;
@@ -136,19 +158,21 @@ int Experiment::getdir(string path, vector<string> &files) {
     }
     int count = 0;
     while ((dirp = readdir(dp)) != NULL) {
-      if(count>1)
-        files.push_back(string(dirp->d_name));
+        if(string(dirp->d_name) != "." && string(dirp->d_name) != "..")
+            files.push_back(string(dirp->d_name));
 
       count++;
     }
     closedir(dp);
+
+
     return 0;
 }
 
 
 //From the model files, this method creates and stores the models in a vector<Model>
 void Experiment::create_models(vector<string> files, int model_type) {
-    for(unsigned int i = 0; i < files.size()-1; i++) {
+    for(unsigned int i = 0; i < files.size(); i++) {
         Model *model;
         switch(model_type) {
             case COVERAGE_MODEL:
@@ -162,6 +186,12 @@ void Experiment::create_models(vector<string> files, int model_type) {
                 break;
             case PERTURBATION_MODEL:
                 model = new PerturbationModel(files.at(i), this);
+                break;
+            case SMOOTHER1_MODEL:
+                model = new Model(files.at(i), this);
+                break;
+            case SMOOTHER2_MODEL:
+                model = new Model(files.at(i), this);
                 break;
         }
         models.push_back(*model);

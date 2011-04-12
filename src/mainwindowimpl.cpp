@@ -14,40 +14,40 @@
 MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f) 
 	: QMainWindow(parent, f)
 {
-	setupUi(this);
-	//initialize Experiment Manager
-  treeWidget->setColumnCount(3);
-  QStringList header;//EP Header
-  header << "Name" << "Iteration" << "Step";
-  treeWidget->setHeaderLabels(header);//assign headers
+    setupUi(this);
+    //initialize Experiment Manager
+      treeWidget->setColumnCount(3);
+      QStringList header;//EP Header
+      header << "Name" << "Iteration" << "Step";
+      treeWidget->setHeaderLabels(header);//assign headers
 
-  //connect the signal related to the top bars
-  connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
-  connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(openSelect()));
-  connect(actionSave, SIGNAL(triggered()), this, SLOT(saveFile()));
-  connect(actionSave_1, SIGNAL(triggered()), this, SLOT(saveFile()));
-  connect(actionSave_2, SIGNAL(clicked()), this, SLOT(saveFile()));
-  connect(actionAnimator, SIGNAL(clicked()), this, SLOT(OpenAnimatorWindow()));
-  connect(actionZoom_1, SIGNAL(clicked()), this, SLOT(doZoom()));
-  connect(actionZoom, SIGNAL(triggered()), this, SLOT(doZoom()));
-  connect(actionSlice, SIGNAL(triggered()), this, SLOT(doSlice()));
-  connect(actionSlice_1, SIGNAL(triggered()), this, SLOT(doSlice()));
-  connect(actionPan, SIGNAL(triggered()), this, SLOT(doPan()));
-  connect(actionRotate, SIGNAL(triggered()), this, SLOT(doRotate()));
-	
-  //connect vel
-  connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
- 
-  //vswork connect widgets to references
-  vswork.setTree(treeWidget);
+      //connect the signal related to the top bars
+      connect(actionOpen, SIGNAL(triggered()), this, SLOT(openSelect()));
+      connect(actionOpen_2, SIGNAL(clicked()), this, SLOT(openSelect()));
+      connect(actionSave, SIGNAL(triggered()), this, SLOT(saveFile()));
+      connect(actionSave_1, SIGNAL(triggered()), this, SLOT(saveFile()));
+      connect(actionSave_2, SIGNAL(clicked()), this, SLOT(saveFile()));
+      connect(actionAnimator, SIGNAL(clicked()), this, SLOT(OpenAnimatorWindow()));
+      connect(actionZoom_1, SIGNAL(clicked()), this, SLOT(doZoom()));
+      connect(actionZoom, SIGNAL(triggered()), this, SLOT(doZoom()));
+      connect(actionSlice, SIGNAL(triggered()), this, SLOT(doSlice()));
+      connect(actionSlice_1, SIGNAL(clicked()), this, SLOT(doSlice()));
+      connect(actionPan, SIGNAL(triggered()), this, SLOT(doPan()));
+      connect(actionRotate, SIGNAL(triggered()), this, SLOT(doRotate()));
 
-  //Initialize custom cursor pointers
-  QBitmap zoomB("zoom.png");
-  QBitmap rotateB("rotate.jpeg");
-  QBitmap sliceB("slice.png");
-  zoomCursor = QCursor(zoomB, -1, -1);
-  rotateCursor = QCursor(rotateB, -1, -1);
-  sliceCursor = QCursor(sliceB, -1, -1);
+      //connect vel
+      connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
+
+      //vswork connect widgets to references
+      vswork.setTree(treeWidget);
+
+      //Initialize custom cursor pointers
+      QBitmap zoomB("zoom.png");
+      QBitmap rotateB("rotate.jpeg");
+      QBitmap sliceB("slice.png");
+      zoomCursor = QCursor(zoomB, -1, -1);
+      rotateCursor = QCursor(rotateB, -1, -1);
+      sliceCursor = QCursor(sliceB, -1, -1);
 
  }
 //

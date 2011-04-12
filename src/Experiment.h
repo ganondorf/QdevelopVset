@@ -62,6 +62,11 @@ private:
     string time_path();
     string velocity_path();
     string perturbation_path();
+    string smoother1_path();
+    string smoother2_path();
+    string finalfiles_path();
+
+
     int getdir(string path, vector<string> &files);
     /* METHODS END */
 
