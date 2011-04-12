@@ -5,13 +5,13 @@ Seismic Tomography Work Unit-->
 <workspace active="T" modeltype="1">
   <username>crchacon</username>
   <projectname>Potrillo</projectname>
-  <projectpath>/home/caca/vsetgit/QdevelopVset/</projectpath>
+  <projectpath>/home/crchacon/Downloads/QdevelopVset/</projectpath>
   <iterations>6</iterations>
   <server>geon.utep.edu</server>
   <date>Wed Aug 11 01:05:58 MDT 2010</date>
   <!--Vel 1d - onedimensional model-->
   <vel1d velSelect="0">
-    <file>/home/caca/vsetgit/QdevelopVset/vzero.par</file>
+    <file>/home/crchacon/Downloads/QdevelopVset/vzero.par</file>
     <h>1.0</h>
     <x0>0.0</x0>
     <y0>0.0</y0>

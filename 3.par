@@ -1,0 +1,11 @@
+nx=231
+ny=26
+nz=69
+floatsrc=1
+fxs=130.143
+fys=9.671
+fzs=6.765
+h=1.
+timefile=/home/crchacon/jupars/Model/OutDir/time.3d
+velfile=/home/crchacon/jupars/Model/OutDir/vel.3d
+
