@@ -37,7 +37,7 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
     connect(actionRotate, SIGNAL(triggered()), this, SLOT(doRotate()));
 
     //connect vel
-    connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
+    connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openModel(QTreeWidgetItem*)));
 
     //vswork connect widgets to references
     vswork.setTree(treeWidget);

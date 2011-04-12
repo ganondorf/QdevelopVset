@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'animatorwindow.ui'
 **
-** Created: Mon Apr 11 22:41:05 2011
+** Created: Mon Apr 11 22:49:50 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

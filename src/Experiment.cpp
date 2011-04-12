@@ -159,7 +159,7 @@ int Experiment::getdir(string path, vector<string> &files) {
     int count = 0;
     while ((dirp = readdir(dp)) != NULL) {
         if(string(dirp->d_name) != "." && string(dirp->d_name) != "..")
-            files.push_back(string(dirp->d_name));
+            files.push_back(string(path + "/" + (dirp->d_name)));
 
       count++;
     }
