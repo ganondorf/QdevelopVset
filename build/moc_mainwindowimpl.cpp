@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindowimpl.h'
 **
-** Created: Mon Apr 11 20:17:11 2011
+** Created: Tue Apr 12 01:01:31 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -36,11 +36,11 @@ static const uint qt_meta_data_MainWindowImpl[] = {
       40,   15,   15,   15, 0x08,
       61,   15,   15,   15, 0x08,
       80,   15,   15,   15, 0x08,
-      90,   15,   15,   15, 0x08,
-     100,   15,   15,   15, 0x08,
-     109,   15,   15,   15, 0x08,
-     117,   15,   15,   15, 0x08,
-     134,  128,   15,   15, 0x08,
+     108,   15,   15,   15, 0x08,
+     118,   15,   15,   15, 0x08,
+     127,   15,   15,   15, 0x08,
+     135,   15,   15,   15, 0x08,
+     152,  146,   15,   15, 0x08,
 
        0        // eod
 };
@@ -48,8 +48,9 @@ static const uint qt_meta_data_MainWindowImpl[] = {
 static const char qt_meta_stringdata_MainWindowImpl[] = {
     "MainWindowImpl\0\0openSelect()\0saveFile()\0"
     "OpenAnimatorWindow()\0refreshTreeItems()\0"
-    "openVel()\0doSlice()\0doZoom()\0doPan()\0"
-    "doRotate()\0event\0keyPressEvent(QKeyEvent*)\0"
+    "openModel(QTreeWidgetItem*)\0doSlice()\0"
+    "doZoom()\0doPan()\0doRotate()\0event\0"
+    "keyPressEvent(QKeyEvent*)\0"
 };
 
 const QMetaObject MainWindowImpl::staticMetaObject = {
@@ -87,7 +88,7 @@ int MainWindowImpl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 1: saveFile(); break;
         case 2: OpenAnimatorWindow(); break;
         case 3: refreshTreeItems(); break;
-        case 4: openVel(); break;
+        case 4: openModel((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1]))); break;
         case 5: doSlice(); break;
         case 6: doZoom(); break;
         case 7: doPan(); break;

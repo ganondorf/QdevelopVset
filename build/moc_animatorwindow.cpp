@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'animatorwindow.h'
 **
-** Created: Sat Apr 9 16:06:19 2011
+** Created: Tue Apr 12 01:01:29 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
