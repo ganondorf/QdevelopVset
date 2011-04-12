@@ -49,7 +49,7 @@ class Workspace
 		//Experiment Methods
 		void add_experiment(string expstring);
 		vector<Experiment*> getList_of_experiments() const;
-
+    
 		//Manage visualizations
 		void add_visualization(Visualization*);
 		void remove_visualization(int);
@@ -63,6 +63,8 @@ class Workspace
 		void sync_all(); //Synchronize all models
 		void save_workspace(string); //Save workspace to the disk
 		void load_workspace(string); //Loade workspace from disk
+		
+    Model find_model(QTreeWidgetItem* item);
 };
 
 #endif /* WORKSPACE_H_ */

@@ -35,6 +35,7 @@ public:
         QCursor sliceCursor;
 
 private:
+  std::string intToString(int i);
         QString binFile;
 
 private slots:
@@ -42,7 +43,7 @@ private slots:
         void saveFile();
         void OpenAnimatorWindow();
 	void refreshTreeItems();
-        void openVel();
+        void openModel(QTreeWidgetItem*);
         void doSlice();
         void doZoom();
         void doPan();

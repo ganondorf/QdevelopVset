@@ -44,18 +44,14 @@ void Workspace::setName(string name_)
 }
 
 //Return the list of experiments added to the workspace
-vector<Experiment*> Workspace::getList_of_experiments() const
-{
-    return expMan.getList_of_experiments();
+vector<Experiment*> Workspace::getList_of_experiments() const {
+  return expMan.getList_of_experiments();
 }
 
 //Return the list of visualizations opened in the workspace
-vector<Visualization*> Workspace::getList_of_visualizations() const
-{
-    return list_of_visualizations_;
+vector<Visualization*> Workspace::getList_of_visualizations() const {
+  return list_of_visualizations_;
 }
-
-
 
 //Add a new experiment to the workspace
 //The experiment will be added to the end of the list

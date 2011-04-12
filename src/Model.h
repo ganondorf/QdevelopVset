@@ -12,9 +12,6 @@
 #include <fstream>
 #include <string>
 #include "Experiment.h"
-
-/**
-* VTK Stuff *
 #include "vtkActor.h"
 #include "vtkColorTransferFunction.h"
 #include "vtkContourFilter.h"
@@ -31,9 +28,9 @@
 #include "vtkVolume.h"
 #include "vtkVolumeProperty.h"
 #include "vtkVolumeRayCastCompositeFunction.h"
-#include "vtkVolumeRayCastMapper.h" 
+#include "vtkVolumeRayCastMapper.h"
 #include "vtkCommand.h"
-**/
+
 using namespace std;
 
 class Experiment;
@@ -47,6 +44,7 @@ public:
     int getStep();
     int getIteration();
     string getName();
+    void render();
     //virtual int draw() {};
     
     int step;
@@ -57,6 +55,12 @@ protected:
    // virtual int read() {};
     string path;
 private:
+  void TkCheckAbort(vtkRenderWindow *renWin);
+  void renderVel();
+  void renderTime();
+  void renderTimeWOVol();
+  void renderDusum();
+  void renderCoverage();
 };
 
 class PerturbationModel: public Model {

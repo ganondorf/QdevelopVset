@@ -1,6 +1,6 @@
 /**
- * Cesar Chacon
- */
+* Cesar Chacon
+*/
 #include "ExperimentManager.h"
 #include <string>
 #include <QMessageBox>
@@ -8,14 +8,12 @@
 #include <QTreeWidget>
 #include <algorithm>
 
- ExperimentManager::ExperimentManager()
-{
-    	
-   	}
-   	
+ExperimentManager::ExperimentManager(){
+
+}
+
 //Add experiment to the list
 void ExperimentManager::add(string expStr) {
-
     unsigned int i;
     vector<Model> models;
 
@@ -115,12 +113,12 @@ void ExperimentManager::add(string expStr) {
      treeWidget->sortItems(3, Qt::AscendingOrder);
 }
 
- 
+
 
 //Set the Treewidget reference
 void ExperimentManager::setTreeWidget(QTreeWidget *TreeWidget){
-	treeWidget = TreeWidget;
-	
+  treeWidget = TreeWidget;
+
 }
 
 
@@ -153,30 +151,30 @@ void ExperimentManager::remove_experiment(Experiment* to_be_removed)
 //The index of the experiment to be removed must be specified
 void ExperimentManager::remove_experiment(int index)
 {
-	list_of_experiments_.erase(list_of_experiments_.begin() + index);
+  list_of_experiments_.erase(list_of_experiments_.begin() + index);
 }
 
 
 //Return the list of experiments added to the workspace
 vector<Experiment*> ExperimentManager::getList_of_experiments() const
 {
-    return list_of_experiments_;
+  return list_of_experiments_;
 }
 
 string ExperimentManager::convertInt(int number)
 {
-    if (number == 0)
-        return "0";
-    string temp="";
-    string returnvalue="";
-    while (number>0)
-    {
-        temp+=number%10+48;
-        number/=10;
-    }
-    for (unsigned int i=0;i<temp.length();i++)
-        returnvalue+=temp[temp.length()-i-1];
-    return returnvalue;
+  if (number == 0)
+    return "0";
+  string temp="";
+  string returnvalue="";
+  while (number>0)
+  {
+    temp+=number%10+48;
+    number/=10;
+  }
+  for (unsigned int i=0;i<temp.length();i++)
+    returnvalue+=temp[temp.length()-i-1];
+  return returnvalue;
 }
 
 //destructor

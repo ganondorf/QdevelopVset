@@ -31,7 +31,7 @@ public:
     //Manage experiments
     void add_experiment(Experiment*);
     void remove_experiment(Experiment*);
-
+    
     /* Attributes*/
     vector<Experiment*> list_of_experiments_;
     QTreeWidget *treeWidget;
