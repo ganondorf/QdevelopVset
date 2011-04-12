@@ -40,7 +40,21 @@ Model::~Model() {
    	}
    	
 void Model::render() {
-  renderVel();
+  if(getName()=="icov"){
+    renderCoverage();
+  }
+  else if(getName()=="time"){
+    renderTime();
+  }
+  else if(getName()=="dusum"){
+    renderDusum();
+  }
+  else if(getName()=="velaa"){
+    renderVel();
+  }
+  else if(getName()=="dvaa"){
+    renderVel();
+  }
   return;
 }
 
@@ -71,7 +85,7 @@ void Model::renderVel() {
 
   // Create the reader for the data
   vtkImageReader *reader = vtkImageReader::New();
-  reader->SetFileName(path);
+  reader->SetFileName(this->path);
   reader->SetDataScalarTypeToUnsignedShort();
   reader->SetDataByteOrderToLittleEndian();
   reader->SetFileDimensionality(3);
@@ -173,7 +187,7 @@ void Model::renderVel() {
   //wm->withdraw(.);
 }
 
-void renderTimeWVol() {
+void renderTime() {
   /*
    * Create the standard renderer, render window and interactor
    */
@@ -185,7 +199,7 @@ void renderTimeWVol() {
 
   // Create the reader for the data
   vtkImageReader *reader = vtkImageReader::New();
-    reader->SetFileName(IMG_FILE);
+    reader->SetFileName(this->path);
     reader->SetDataScalarTypeToUnsignedShort();
     reader->SetDataByteOrderToLittleEndian();
     reader->SetFileDimensionality(3);    
@@ -291,15 +305,15 @@ void renderTimeWOVol() {
   /*
    * Create the standard renderer, render window and interactor
    */
-  vtkRenderer *ren1 = vtkRenderer::New();
-  vtkRenderWindow *renWin = vtkRenderWindow::New();
+    vtkRenderer *ren1 = vtkRenderer::New();
+    vtkRenderWindow *renWin = vtkRenderWindow::New();
     renWin->AddRenderer(ren1);
-  vtkRenderWindowInteractor *iren = vtkRenderWindowInteractor::New();
+    vtkRenderWindowInteractor *iren = vtkRenderWindowInteractor::New();
     iren->SetRenderWindow(renWin);
 
   // Create the reader for the data
   vtkImageReader *reader = vtkImageReader::New();
-    reader->SetFileName(IMG_FILE);
+    reader->SetFileName(this->path);
     reader->SetDataScalarTypeToUnsignedShort();
     reader->SetDataByteOrderToLittleEndian();
     reader->SetFileDimensionality(3);    
@@ -400,7 +414,7 @@ void renderDusum() {
 
   // Create the reader for the data
   vtkImageReader *reader = vtkImageReader::New();
-  reader->SetFileName("dusum.3d");
+  reader->SetFileName(this->path);
   reader->SetDataScalarTypeToUnsignedShort();
   reader->SetDataByteOrderToLittleEndian();
   reader->SetFileDimensionality(3);
@@ -524,7 +538,7 @@ void renderCoverage() {
 
   // Create the reader for the data
   vtkImageReader *reader = vtkImageReader::New();
-  reader->SetFileName("icovsh.3d");
+  reader->SetFileName(this->path);
   reader->SetDataScalarTypeToUnsignedShort();
   reader->SetDataByteOrderToLittleEndian();
   reader->SetFileDimensionality(3);
