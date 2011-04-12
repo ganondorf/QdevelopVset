@@ -30,7 +30,7 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
   connect(actionAnimator, SIGNAL(clicked()), this, SLOT(OpenAnimatorWindow()));
 	
   //connect vel
-  connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel()));
+  connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel(QTreeWidgetItem*)));
  
   //vswork connect widgets to references
   vswork.setTree(treeWidget);
@@ -222,12 +222,12 @@ treeWidget->resizeColumnToContents(3);
 
 
 //temporary function
-void MainWindowImpl::openVel()
+void MainWindowImpl::openVel(QTreeWidgetItem *item)
 {	
 	//QMessageBox msgBox;
    //QString qstr = QString::fromStdString("cute VEl graphic!");
  //msgBox.setText(qstr);
  //msgBox.exec();
-
-system("./Model");
+  item->setText(0, QObject::tr("Clicked this bitch"));
+  system("./Model");
 }
