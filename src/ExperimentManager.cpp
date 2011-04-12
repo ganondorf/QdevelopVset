@@ -18,7 +18,7 @@ void ExperimentManager::add(string expStr) {
   vector<Model> models;
 
   Experiment new_experiment = Experiment(expStr);
- //list_of_experiments_.push_back(&new_experiment);
+  list_of_experiments_.push_back(&new_experiment);
 
   models = new_experiment.getModels();
 

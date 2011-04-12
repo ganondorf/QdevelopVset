@@ -63,6 +63,8 @@ class Workspace
 		void sync_all(); //Synchronize all models
 		void save_workspace(string); //Save workspace to the disk
 		void load_workspace(string); //Loade workspace from disk
+		
+    Model find_model(QTreeWidgetItem* item);
 };
 
 #endif /* WORKSPACE_H_ */

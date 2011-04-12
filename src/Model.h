@@ -47,6 +47,7 @@ public:
     int getStep();
     int getIteration();
     string getName();
+    void render();
     //virtual int draw() {};
     
     int step;

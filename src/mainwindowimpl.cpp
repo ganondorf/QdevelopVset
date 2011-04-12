@@ -30,7 +30,7 @@ MainWindowImpl::MainWindowImpl( QWidget * parent, Qt::WFlags f)
   connect(actionAnimator, SIGNAL(clicked()), this, SLOT(OpenAnimatorWindow()));
 	
   //connect vel
-  connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openVel(QTreeWidgetItem*)));
+  connect(treeWidget, SIGNAL(itemDoubleClicked ( QTreeWidgetItem*, int ) ), this, SLOT(openModel(QTreeWidgetItem*)));
  
   //vswork connect widgets to references
   vswork.setTree(treeWidget);
@@ -221,13 +221,35 @@ treeWidget->resizeColumnToContents(3);
 }
 
 
-//temporary function
-void MainWindowImpl::openVel(QTreeWidgetItem *item)
-{	
-	//QMessageBox msgBox;
-   //QString qstr = QString::fromStdString("cute VEl graphic!");
- //msgBox.setText(qstr);
- //msgBox.exec();
-  item->setText(0, QObject::tr("Clicked this bitch"));
-  system("./Model");
+void MainWindowImpl::openModel(QTreeWidgetItem *item) {	
+  Experiment *experiment = new Experiment("/home/ahlatimer/vset");
+  std::vector<Model> models = experiment->getModels();
+  
+  std::string model_type = "";
+  std::string iteration = "";
+  std::string step = "";
+  
+  if(item->text(0) == "Coverage") {
+    model_type = "icov";
+  } else if(item->text(0) == "Time") {
+    model_type = "time";
+  } else if(item->text(0) == "Vel Perturbation") {
+    model_type = "dusum";
+  } else if(item->text(0) == "Smoother 1") {
+    model_type = "velaa";
+  } else if(item->text(9) == "Smoother 2") {
+    model_type = "dvaa";
+  }
+  
+  cout << model_type << " " << iteration << " " << step << "\n";
+  for(int i = 0; i < models.size(); i++) {
+    iteration = (models[i].getIteration() + "");
+    step = (models[i].getStep() + "");
+    cout << "Looking for models: " << iteration << " " << step << "\n";
+    if(models[i].getName() == model_type && item->text(1) == QString::fromStdString(iteration) && item->text(2) == QString::fromStdString(step)) {
+      cout << "Found the model\n";
+      models[i].render();
+      return;
+    }
+  }
 }

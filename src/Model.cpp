@@ -46,4 +46,8 @@ Model::~Model() {
     string Model::getName(){
     	return name;
    	}
+   	
+void Model::render() {
+  cout << "Rendering!";
+}
 
