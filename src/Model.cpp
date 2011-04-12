@@ -85,7 +85,7 @@ void Model::renderVel() {
 
   // Create the reader for the data
   vtkImageReader *reader = vtkImageReader::New();
-  reader->SetFileName("/home/ahlatimer/vset/Model/VelPer/dusum11.3d");
+  reader->SetFileName(this->path.c_str());
   reader->SetDataScalarTypeToUnsignedShort();
   reader->SetDataByteOrderToLittleEndian();
   reader->SetFileDimensionality(3);
@@ -414,7 +414,7 @@ void Model::renderDusum() {
 
   // Create the reader for the data
   vtkImageReader *reader = vtkImageReader::New();
-  reader->SetFileName("/home/ahlatimer/vset/Model/VelPer/dusum11.3d");
+  reader->SetFileName(this->path.c_str());
   reader->SetDataScalarTypeToUnsignedShort();
   reader->SetDataByteOrderToLittleEndian();
   reader->SetFileDimensionality(3);

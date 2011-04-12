@@ -53,8 +53,6 @@ vector<Visualization*> Workspace::getList_of_visualizations() const {
   return list_of_visualizations_;
 }
 
-
-
 //Add a new experiment to the workspace
 //The experiment will be added to the end of the list
 void Workspace::add_experiment(string expstring)

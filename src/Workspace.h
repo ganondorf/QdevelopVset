@@ -49,7 +49,7 @@ class Workspace
 		//Experiment Methods
 		void add_experiment(string expstring);
 		vector<Experiment*> getList_of_experiments() const;
-
+    
 		//Manage visualizations
 		void add_visualization(Visualization*);
 		void remove_visualization(int);
