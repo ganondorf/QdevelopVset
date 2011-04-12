@@ -57,7 +57,7 @@ protected:
 private:
   void TkCheckAbort(vtkRenderWindow *renWin);
   void renderVel();
-  void renderTimeWVol();
+  void renderTime();
   void renderTimeWOVol();
   void renderDusum();
   void renderCoverage();
